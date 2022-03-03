@@ -97,19 +97,38 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		var TryOnConfig = new Tds.TryOn({
-			clientKey: "12345678",
-			containerDiv: "containDiv",
-			productType: "Men",
-			productGroup: "Shirt",
-			// modelImg: undefined,
-			modelTopImg: "https://res.cloudinary.com/tdscloudcdn/image/upload/v1/Tryon/Images/shirt/tryon_1.png",
-			// modelBottomImg: undefined,
-			displayResizeBtn: true,
-			displayShareBtn: true,
-			displayBGGallaryBtn: true,
-			displayTryonHandle: true
-		})
+		TryOnConfig = new Tds.TryOn({
+		  clientKey: "abcdabcd1",
+		  containerDiv: "containerDiv",
+		  uploadBtnId: "uploadImg",
+		  productType: ptName,
+		  productGroup: pgName,
+		  productBottomGroup: bottomGroup,
+		  modelImg: undefined,
+		  modelTopImg: topImgPath,
+		  modelBottomImg: bottomImgPath,
+		  displayResizeBtn: false,
+		  displayShareBtn: false,
+		  displayBGGallaryBtn: false,
+		  displayTryonHandle: false,
+		  isTotem: true,
+		  tryOnVideoDivId: "tryon_video",
+		  onPluginLoad: () => {
+			console.log('plugin load');
+		  },
+		  onRenderImageChange: (data) => {
+			console.log("image changed");
+		  },
+		  swapLeft: () => {
+			console.log('left');
+		  },
+		  swapRight: () => {
+			console.log('right');
+		  },
+		  errorCB: (msg) => {
+			console.log(msg);
+		  },
+		});
 
 		$('.model').click(function() {
 			var SelectedProduct = $(this).parent().attr('pt');
